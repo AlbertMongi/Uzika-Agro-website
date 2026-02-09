@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,14 +9,14 @@
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
 
-		<!-- Bootstrap CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-		<link href="css/tiny-slider.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet">
-		<title>Uzika Agro</title>
-	</head>
-<!-- ==== SCROLL REVEAL STYLES (added) ==== -->
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="css/tiny-slider.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <title>Proplus</title>
+
+  <!-- Original Scroll Reveal Styles -->
   <style>
     .scroll-reveal {
       opacity: 0;
@@ -28,540 +27,364 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* Optional: slight delay for staggered effect */
     .scroll-reveal.delay-1 { transition-delay: 0.1s; }
     .scroll-reveal.delay-2 { transition-delay: 0.2s; }
     .scroll-reveal.delay-3 { transition-delay: 0.3s; }
+    .scroll-reveal.delay-4 { transition-delay: 0.4s; }
+
+    /* === NEW: Reduce space between sections (modern tight look) === */
+    .hero,
+    .product-section,
+    .why-choose-section,
+    .we-help-section,
+    .popular-product,
+    .testimonial-section {
+      padding-top: 80px !important;
+      padding-bottom: 80px !important;
+    }
+
+    @media (max-width: 991px) {
+      .hero,
+      .product-section,
+      .why-choose-section,
+      .we-help-section,
+      .popular-product,
+      .testimonial-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+      }
+    }
+
+    .we-help-section.py-5 {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    /* === END reduced spacing === */
   </style>
-  <!-- ==== END SCROLL REVEAL STYLES ==== -->
-	<body>
+</head>
+<body>
 
-		<!-- Start Header/Navigation -->
-		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
-
-			<div class="container">
-				<a class="navbar-brand" href="index.html">Uzika Agro<span>.</span></a>
-
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarsFurni">
-					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li class="nav-item active">
-							<a class="nav-link" href="index.html">Home</a>
-						</li>
-						<li><a class="nav-link" href="shop.html">Shop</a></li>
-						<li><a class="nav-link" href="about.html">About us</a></li>
-					
-						<li><a class="nav-link" href="services.html">Services</a></li>
-						<li><a class="nav-link" href="contact.html">Contact us</a></li>
-					</ul>
-
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<!-- <li><a class="nav-link" href="#"><img src="images/user.svg"></a></li> -->
-						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
-					</ul>
-				</div>
-			</div>
-				
-		</nav>
-		<!-- End Header/Navigation -->
-
-	<!-- Start Hero Section -->
-<div class="hero">
+  <!-- Start Header/Navigation -->
+  <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
     <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-lg-5">
-                <div class="intro-excerpt">
-                    <h1>We buy <span class="d-block">Premium Coffee & Fresh Nuts</span></h1>
-                    <p class="mb-4">
-                        We source and trade high-quality coffee beans and fresh nuts directly from trusted farmers, ensuring freshness, authentic flavor, and fair prices.
-                    </p>
-                    <p>
-                        <a href="services.html" class="btn btn-secondary me-2">Services</a>
-                        <a href="contact.html" class="btn btn-white-outline">Contact Us</a>
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <div class="hero-img-wrap">
-                  <img src="images/coffeecup.png" class="img-fluid" alt="Coffee and Nuts" style="margin-top: -55px;">
-
-                </div>
-            </div>
-        </div>
+      <a class="navbar-brand" href="index.html">Proplus<span>.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsFurni">
+        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+          <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="about.html">About us</a></li>
+          	<li><a class="nav-link" href="shop.html">Shop</a></li>
+          <li><a class="nav-link" href="services.html">Services</a></li>
+          <li><a class="nav-link" href="contact.html">Contact us</a></li>
+          <li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
+        </ul>
+      </div>
     </div>
-</div>
-<!-- End Hero Section -->
+  </nav>
+  <!-- End Header/Navigation -->
 
-<!-- Start Product Section -->
-<div class="product-section">
-	<div class="container">
-		<div class="row">
-
-			<!-- Start Column 1 -->
-			<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
-				<h2 class="mb-4 section-title">Premium Coffee & Nut Products</h2>
-				<p class="mb-4">
-					We are a trusted company specializing in sourcing, buying, and selling high-quality coffee beans and a wide variety of nuts. 
-					Our mission is to deliver fresh, sustainably sourced products to businesses and consumers who value exceptional taste and reliable service.
-				</p>
-				<p><a href="shop.html" class="btn">Explore</a></p>
-			</div> 
-			<!-- End Column 1 -->
-
-			<!-- Start Column 2 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-				<a class="product-item" href="cart.html">
-					<img src="images/image (1).png" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Arabica Coffee Beans</h3>
-					
-
-					<!-- <span class="icon-cross">
-						<img src="images/cross.svg" class="img-fluid">
-					</span> -->
-				</a>
-			</div> 
-			<!-- End Column 2 -->
-
-			<!-- Start Column 3 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-				<a class="product-item" href="cart.html">
-					<img src="images/image (1).png" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Mixed Roasted Nuts</h3>
-			
-
-					
-				</a>
-			</div>
-			<!-- End Column 3 -->
-
-			<!-- Start Column 4 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-				<a class="product-item" href="cart.html">
-					<img src="images/image (1).png" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Premium Cashews</h3>
-
-
-				
-				</a>
-			</div>
-			<!-- End Column 4 -->
-
-		</div>
-	</div>
-</div>
-<!-- End Product Section -->
-
-<!-- Start Why Choose Us Section -->
-<div class="why-choose-section">
+  <!-- Start Hero Section -->
+  <div class="hero scroll-reveal">
     <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-lg-6">
-                <h2 class="section-title">Why Choose Us</h2>
-                <p>We specialize in sourcing, buying, and selling premium coffee beans and high-quality nuts. Our products are carefully selected to ensure freshness, rich flavor, and exceptional value for our customers.</p>
-
-                <div class="row my-5">
-                    <div class="col-6 col-md-6">
-                        <div class="feature">
-                            <div class="icon">
-                                <img src="images/truck.svg" alt="Image" class="imf-fluid">
-                            </div>
-                            <h3>Fast &amp; Reliable Delivery</h3>
-                            <p>We ensure quick and dependable delivery to keep your coffee and nut supplies fresh and always in stock.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-md-6">
-                        <div class="feature">
-                            <div class="icon">
-                                <img src="images/bag.svg" alt="Image" class="imf-fluid">
-                            </div>
-                            <h3>Simple &amp; Convenient Ordering</h3>
-                            <p>Our streamlined process makes it easy for you to buy premium coffee and nuts in just a few clicks.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-md-6">
-                        <div class="feature">
-                            <div class="icon">
-                                <img src="images/support.svg" alt="Image" class="imf-fluid">
-                            </div>
-                            <h3>Dedicated Customer Support</h3>
-                            <p>Our team is here 24/7 to assist you with orders, sourcing needs, and product inquiries.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-md-6">
-                        <div class="feature">
-                            <div class="icon">
-                                <img src="images/return.svg" alt="Image" class="imf-fluid">
-                            </div>
-                            <h3>Quality Guarantee</h3>
-                            <p>We stand behind our products with easy returns and a commitment to delivering only the best.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-lg-5">
-                <div class="img-wrap">
-                    <img src="images/farm.jpg" alt="Image" class="img-fluid">
-                </div>
-            </div>
-
+      <div class="row justify-content-between">
+        <div class="col-lg-5 scroll-reveal delay-1">
+          <div class="intro-excerpt">
+            <h1>We buy <span class="d-block">Premium Coffee & Fresh Nuts</span></h1>
+            <p class="mb-4">
+              We source and trade high-quality coffee beans and fresh nuts directly from trusted farmers, ensuring freshness, authentic flavor, and fair prices.
+            </p>
+            <p>
+              <a href="services.html" class="btn btn-secondary me-2">Services</a>
+              <a href="contact.html" class="btn btn-white-outline">Contact Us</a>
+            </p>
+          </div>
         </div>
+        <div class="col-lg-7 scroll-reveal delay-2">
+          <div class="hero-img-wrap">
+            <img src="images/coffeecup.png" class="img-fluid" alt="Coffee and Nuts" style="margin-top: -40px;">
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-<!-- End Why Choose Us Section -->
- <!-- Start We Help Section -->
-<div class="we-help-section py-5">
+  </div>
+  <!-- End Hero Section -->
+
+  <!-- Start Product Section -->
+  <div class="product-section scroll-reveal">
     <div class="container">
-        <div class="row align-items-center">
-            <!-- Image Column -->
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <div class="img-wrap" style="padding-left: 15px;">
-                    <img src="images/tree.webp" alt="We Help Image" class="img-fluid" style="max-height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
-                </div>
-            </div>
-
-            <!-- Content Column -->
-            <div class="col-lg-6">
-                <h2 class="section-title mb-4">We Help You Access Premium Coffee & Nuts</h2>
-                <p>We supply high-quality coffee and cashew sourced directly from trusted farmers across Tanzania. Whether you’re a retailer, wholesaler, exporter, or café owner, we make it easy for you to get fresh, well-graded products that match your business needs.</p>
-
-                <ul class="custom-list my-3" style="list-style: disc; padding-left: 25px; line-height: 1.8;">
-                    <li>Fresh, field-sourced coffee and cashew.</li>
-                    <li>Clean, traceable products you can trust.</li>
-                    <li>Reliable supply for both small and large buyers.</li>
-                    <li>Consistent quality ensured through proper grading.</li>
-                </ul>
-            </div>
+      <div class="row">
+        <div class="col-md-12 col-lg-3 mb-5 mb-lg-0 scroll-reveal delay-1">
+          <h2 class="mb-4 section-title">Premium Coffee & Nut Products</h2>
+          <p class="mb-4">
+            We are a trusted company specializing in sourcing, buying, and selling high-quality coffee beans and a wide variety of nuts. 
+            Our mission is to deliver fresh, sustainably sourced products to businesses and consumers who value exceptional taste and reliable service.
+          </p>
+          <p><a href="about.html" class="btn">Explore</a></p>
         </div>
+
+        <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0 scroll-reveal delay-2">
+          <a class="product-item" href="cart.html">
+            <img src="images/arabica.png" class="img-fluid product-thumbnail">
+            <h3 class="product-title">Arabica Coffee Beans</h3>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0 scroll-reveal delay-3">
+          <a class="product-item" href="cart.html">
+            <img src="https://png.pngtree.com/png-clipart/20250308/original/pngtree-freshly-roasted-almonds-and-cashews-in-a-natural-bowl-png-image_20597343.png" class="img-fluid product-thumbnail">
+            <h3 class="product-title">Mixed Roasted Nuts</h3>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0 scroll-reveal delay-4">
+          <a class="product-item" href="cart.html">
+            <img src="images/cashew.png" class="img-fluid product-thumbnail">
+            <h3 class="product-title">Premium Cashews</h3>
+          </a>
+        </div>
+      </div>
     </div>
-</div>
-<!-- End We Help Section -->
+  </div>
+  <!-- End Product Section -->
 
-
-<!-- Start Popular Product -->
-<div class="popular-product">
+  <!-- Start Why Choose Us Section -->
+  <div class="why-choose-section scroll-reveal">
     <div class="container">
-        <div class="row">
+      <div class="row justify-content-between">
+        <div class="col-lg-6 scroll-reveal delay-1">
+          <h2 class="section-title">Why Choose Us</h2>
+          <p>We specialize in sourcing, buying, and selling premium coffee beans and high-quality nuts. Our products are carefully selected to ensure freshness, rich flavor, and exceptional value for our customers.</p>
 
-            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                <div class="product-item-sm d-flex">
-                    <div class="thumbnail">
-                        <img src="images/image (1).png" alt="Image" class="img-fluid">
-                    </div>
-                    <div class="pt-3">
-                        <h3>Arabica Coffee Beans</h3>
-                        <p>Rich aroma and smooth flavor, sourced from top-quality farms to ensure freshness and consistency.</p>
-                        <p><a href="shop.html">Read More</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                <div class="product-item-sm d-flex">
-                    <div class="thumbnail">
-                        <img src="images/image (1).png" alt="Image" class="img-fluid">
-                    </div>
-                    <div class="pt-3">
-                        <h3>Roasted Mixed Nuts</h3>
-                        <p>A delicious variety of premium nuts, perfectly roasted to deliver rich taste and great nutrition.</p>
-                        <p><a href="shop.html">Read More</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                <div class="product-item-sm d-flex">
-                    <div class="thumbnail">
-                        <img src="images/image (1).png" alt="Image" class="img-fluid">
-                    </div>
-                    <div class="pt-3">
-                        <h3>Premium Cashews</h3>
-                        <p>High-quality cashews known for their creamy texture and superior taste, perfect for snacks or retail.</p>
-                        <p><a href="shop.html">Read More</a></p>
-                    </div>
-                </div>
-            </div>
-
+          <div class="row my-5">
+            <div class="col-6 col-md-6 scroll-reveal delay-1"><div class="feature"><div class="icon"><img src="images/truck.svg" alt="Image" class="imf-fluid"></div><h3>Fast &amp; Reliable Delivery</h3><p>We ensure quick and dependable delivery to keep your coffee and nut supplies fresh and always in stock.</p></div></div>
+            <div class="col-6 col-md-6 scroll-reveal delay-2"><div class="feature"><div class="icon"><img src="images/bag.svg" alt="Image" class="imf-fluid"></div><h3>Simple &amp; Convenient Ordering</h3><p>Our streamlined process makes it easy for you to buy premium coffee and nuts in just a few clicks.</p></div></div>
+            <div class="col-6 col-md-6 scroll-reveal delay-3"><div class="feature"><div class="icon"><img src="images/support.svg" alt="Image" class="imf-fluid"></div><h3>Dedicated Customer Support</h3><p>Our team is here 24/7 to assist you with orders, sourcing needs, and product inquiries.</p></div></div>
+            <div class="col-6 col-md-6 scroll-reveal delay-4"><div class="feature"><div class="icon"><img src="images/return.svg" alt="Image" class="imf-fluid"></div><h3>Quality Guarantee</h3><p>We stand behind our products with easy returns and a commitment to delivering only the best.</p></div></div>
+          </div>
         </div>
+
+        <div class="col-lg-5 scroll-reveal delay-2">
+          <div class="img-wrap">
+            <img src="images/farm.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-<!-- End Popular Product -->
- 
-<!-- Start Testimonial Slider -->
-<div class="testimonial-section">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-7 mx-auto text-center">
-				<h2 class="section-title">Testimonials</h2>
-			</div>
-		</div>
+  </div>
+  <!-- End Why Choose Us Section -->
 
-		<div class="row justify-content-center">
-			<div class="col-lg-12">
-				<div class="testimonial-slider-wrap text-center">
+  <!-- Start We Help Section -->
+  <div class="we-help-section py-5 scroll-reveal">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0 scroll-reveal delay-1">
+          <div class="img-wrap" style="padding-left: 15px;">
+            <img src="images/tree.webp" alt="We Help Image" class="img-fluid" style="max-height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
+          </div>
+        </div>
+        <div class="col-lg-6 scroll-reveal delay-2">
+          <h2 class="section-title mb-4">We Help You Access Premium Coffee & Nuts</h2>
+          <p>We supply high-quality coffee and cashew sourced directly from trusted farmers across Tanzania. Whether you’re a retailer, wholesaler, exporter, or café owner, we make it easy for you to get fresh, well-graded products that match your business needs.</p>
+          <ul class="custom-list my-3" style="list-style: disc; padding-left: 25px; line-height: 1.8;">
+            <li class="scroll-reveal delay-1">Fresh, field-sourced coffee and cashew.</li>
+            <li class="scroll-reveal delay-2">Clean, traceable products you can trust.</li>
+            <li class="scroll-reveal delay-3">Reliable supply for both small and large buyers.</li>
+            <li class="scroll-reveal delay-4">Consistent quality ensured through proper grading.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End We Help Section -->
 
-					<div id="testimonial-nav">
-						<span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
-						<span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
-					</div>
+  <!-- Start Popular Product -->
+  <div class="popular-product scroll-reveal">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 scroll-reveal delay-1">
+          <div class="product-item-sm d-flex">
+            <div class="thumbnail"><img src="images/arabica.png" alt="Image" class="img-fluid"></div>
+            <div class="pt-3">
+              <h3>Arabica Coffee Beans</h3>
+              <p>Rich aroma and smooth flavor, sourced from top-quality farms to ensure freshness.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 scroll-reveal delay-2">
+          <div class="product-item-sm d-flex">
+            <div class="thumbnail"><img src="https://png.pngtree.com/png-clipart/20250308/original/pngtree-freshly-roasted-almonds-and-cashews-in-a-natural-bowl-png-image_20597343.png" alt="Image" class="img-fluid"></div>
+            <div class="pt-3">
+              <h3>Roasted Mixed Nuts</h3>
+              <p>A delicious variety of premium nuts, perfectly roasted to deliver rich taste and great nutrition.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 scroll-reveal delay-3">
+          <div class="product-item-sm d-flex">
+            <div class="thumbnail"><img src="images/cashew.png" alt="Image" class="img-fluid"></div>
+            <div class="pt-3">
+              <h3>Premium Cashews</h3>
+              <p>High-quality cashews known for their creamy texture and superior taste, perfect for snacks or retail.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Popular Product -->
 
-					<div class="testimonial-slider">
-						
-						<div class="item">
-							<div class="row justify-content-center">
-								<div class="col-lg-8 mx-auto">
+  <!-- Start Testimonial Slider -->
+  <div class="testimonial-section scroll-reveal">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 mx-auto text-center scroll-reveal delay-1">
+          <h2 class="section-title">Testimonials</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="testimonial-slider-wrap text-center">
+            <div id="testimonial-nav">
+              <span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
+              <span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
+            </div>
+            <div class="testimonial-slider">
+              <div class="item scroll-reveal delay-1">
+                <div class="row justify-content-center"><div class="col-lg-8 mx-auto">
+                  <div class="testimonial-block text-center">
+                    <blockquote class="mb-5"><p>“The quality of their coffee beans is outstanding. Fresh aroma, rich flavor, and great consistency. Our customers love it.”</p></blockquote>
+                    <div class="author-info">
+                      <div class="author-pic"><img src="images/person1.webp" alt="Neema Gabriel" class="img-fluid"></div>
+                      <h3 class="font-weight-bold">Neema Gabriel</h3>
+                      <span class="position d-block mb-3">Cafe Owner</span>
+                    </div>
+                  </div>
+                </div></div>
+              </div>
+              <div class="item scroll-reveal delay-1">
+                <div class="row justify-content-center"><div class="col-lg-8 mx-auto">
+                  <div class="testimonial-block text-center">
+                    <blockquote class="mb-5"><p>“Proplus has helped us access clean, well-graded cashew. Their sourcing from farmers is transparent and trustworthy.”</p></blockquote>
+                    <div class="author-info">
+                      <div class="author-pic"><img src="images/person 3.jpg" alt="Juma Mwakipesile" class="img-fluid"></div>
+                      <h3 class="font-weight-bold">Juma Mwakipesile</h3>
+                      <span class="position d-block mb-3">Exporter</span>
+                    </div>
+                  </div>
+                </div></div>
+              </div>
+              <div class="item scroll-reveal delay-1">
+                <div class="row justify-content-center"><div class="col-lg-8 mx-auto">
+                  <div class="testimonial-block text-center">
+                    <blockquote class="mb-5"><p>“We appreciate their timely deliveries. They always supply what they promise, and the products meet our standards.”</p></blockquote>
+                    <div class="author-info">
+                      <div class="author-pic"><img src="images/person4.jpg" alt="Anthony Mrope" class="img-fluid"></div>
+                      <h3 class="font-weight-bold">Anthony Mrope</h3>
+                      <span class="position d-block mb-3">Retail Supplier</span>
+                    </div>
+                  </div>
+                </div></div>
+              </div>
+              <div class="item scroll-reveal delay-1">
+                <div class="row justify-content-center"><div class="col-lg-8 mx-auto">
+                  <div class="testimonial-block text-center">
+                    <blockquote class="mb-5"><p>“Working with Proplus has made our procurement easier. The quality checks they do at the source give us confidence in every order.”</p></blockquote>
+                    <div class="author-info">
+                      <div class="author-pic"><img src="images/person6.jpg" alt="Kelvin Mwaisabila" class="img-fluid"></div>
+                      <h3 class="font-weight-bold">Kelvin Mwaisabila</h3>
+                      <span class="position d-block mb-3">Food processing Company</span>
+                    </div>
+                  </div>
+                </div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Testimonial Slider -->
 
-									<div class="testimonial-block text-center">
-										<blockquote class="mb-5">
-											<p>&ldquo;Reliable service and excellent communication. We buy coffee and cashew in bulk, and the quality has been consistent every time.&rdquo;</p>
-										</blockquote>
+  <!-- Start Footer Section -->
+  <footer class="footer-section scroll-reveal">
+    <div class="container relative">
+      <div class="sofa-img">
+        <img src="images/image (1).png" alt="Image" class="img-fluid" width="280">
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="subscription-form">
+            <h3 class="d-flex align-items-center">
+              <span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span>
+              <span>Subscribe for Fresh Coffee & Nuts Updates</span>
+            </h3>
+            <form action="#" class="row g-3">
+              <div class="col-auto"><input type="text" class="form-control" placeholder="Enter your name"></div>
+              <div class="col-auto"><input type="email" class="form-control" placeholder="Enter your email"></div>
+              <div class="col-auto"><button class="btn btn-primary"><span class="fa fa-paper-plane"></span></button></div>
+            </form>
+          </div>
+        </div>
+      </div>
 
-										<div class="author-info">
-											<div class="author-pic">
-												<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-											</div>
-											<h3 class="font-weight-bold">Maria John</h3>
-											<span class="position d-block mb-3">Wholesale buyer</span>
-										</div>
-									</div>
+      <div class="row g-5 mb-5">
+        <div class="col-lg-4 scroll-reveal delay-1">
+          <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Proplus<span>.</span></a></div>
+          <p class="mb-4">We provide premium roasted coffee beans and high-quality nuts sourced from trusted farms. Freshness, quality, and customer satisfaction are at the heart of everything we do.</p>
+          <ul class="list-unstyled custom-social">
+            <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
+            <li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
+            <li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
+            <li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-8">
+          <div class="row links-wrap">
+            <div class="col-6 col-sm-6 col-md-3 scroll-reveal delay-1">
+              <ul class="list-unstyled"><li><a href="#">About Us</a></li><li><a href="#">Our Products</a></li><li><a href="#">Wholesale</a></li><li><a href="#">Contact</a></li></ul>
+            </div>
+            <div class="col-6 col-sm-6 col-md-3 scroll-reveal delay-2">
+              <ul class="list-unstyled"><li><a href="#">Customer Support</a></li><li><a href="#">FAQs</a></li><li><a href="#">Shipping Info</a></li></ul>
+            </div>
+            <div class="col-6 col-sm-6 col-md-3 scroll-reveal delay-3">
+              <ul class="list-unstyled"><li><a href="#">Careers</a></li><li><a href="#">Our Team</a></li><li><a href="#">Sustainability</a></li><li><a href="#">Privacy Policy</a></li></ul>
+            </div>
+            <div class="col-6 col-sm-6 col-md-3 scroll-reveal delay-4">
+              <ul class="list-unstyled"><li><a href="#">Arabica Coffee</a></li><li><a href="#">Robusta Coffee</a></li><li><a href="#">Premium Nuts</a></li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
-								</div>
-							</div>
-						</div> 
-						<!-- END item -->
+      <div class="border-top copyright">
+        <div class="row pt-4">
+          <div class="col-lg-6">
+            <p class="mb-2 text-center text-lg-start">
+              Copyright &copy; <script>document.write(new Date().getFullYear());</script>. All Rights Reserved. — Crafted with care by EvMak Tz.
+            </p>
+          </div>
+          <div class="col-lg-6 text-center text-lg-end">
+            <ul class="list-unstyled d-inline-flex ms-auto">
+              <li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer Section -->
 
-						<div class="item">
-							<div class="row justify-content-center">
-								<div class="col-lg-8 mx-auto">
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/tiny-slider.js"></script>
+  <script src="js/custom.js"></script>
 
-									<div class="testimonial-block text-center">
-										<blockquote class="mb-5">
-											<p>&ldquo;The quality of their coffee beans is outstanding. Fresh aroma, rich flavor, and great consistency. Our customers love it.&rdquo;</p>
-										</blockquote>
-
-										<div class="author-info">
-											<div class="author-pic">
-												<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-											</div>
-											<h3 class="font-weight-bold">Neema Gabriel</h3>
-											<span class="position d-block mb-3">Cafe Owner</span>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div> 
-						<!-- END item -->
-
-						<div class="item">
-							<div class="row justify-content-center">
-								<div class="col-lg-8 mx-auto">
-
-									<div class="testimonial-block text-center">
-										<blockquote class="mb-5">
-											<p>&ldquo;Uzika Agro has helped us access clean, well-graded cashew. Their sourcing from farmers is transparent and trustworthy.&rdquo;</p>
-										</blockquote>
-
-										<div class="author-info">
-											<div class="author-pic">
-												<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-											</div>
-											<h3 class="font-weight-bold">Juma Mwakipesile</h3>
-											<span class="position d-block mb-3">Exporter</span>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div> 
-						<!-- END item -->
-
-						<div class="item">
-							<div class="row justify-content-center">
-								<div class="col-lg-8 mx-auto">
-
-									<div class="testimonial-block text-center">
-										<blockquote class="mb-5">
-											<p>&ldquo;We appreciate their timely deliveries. They always supply what they promise, and the products meet our standards.&rdquo;</p>
-										</blockquote>
-
-										<div class="author-info">
-											<div class="author-pic">
-												<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-											</div>
-											<h3 class="font-weight-bold">Asha Mrope</h3>
-											<span class="position d-block mb-3">Retail Supplier</span>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div> 
-						<!-- END item -->
-
-						
-						<div class="item">
-							<div class="row justify-content-center">
-								<div class="col-lg-8 mx-auto">
-
-									<div class="testimonial-block text-center">
-										<blockquote class="mb-5">
-											<p>&ldquo;Working with Uzika Agro has made our procurement easier. The quality checks they do at the source give us confidence in every order.&rdquo;</p>
-										</blockquote>
-
-										<div class="author-info">
-											<div class="author-pic">
-												<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-											</div>
-											<h3 class="font-weight-bold">Kelvin Mwaisabila</h3>
-											<span class="position d-block mb-3">Food processing Company</span>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div> 
-						<!-- END item -->
-
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- End Testimonial Slider -->
-
-<!-- Start Footer Section -->
-<footer class="footer-section">
-	<div class="container relative">
-
-		<div class="sofa-img">
-			<img src="images/image (1).png" alt="Image" class="img-fluid" width="280">
-
-		</div>
-
-		<div class="row">
-			<div class="col-lg-8">
-				<div class="subscription-form">
-					<h3 class="d-flex align-items-center">
-						<span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span>
-						<span>Subscribe for Fresh Coffee & Nuts Updates</span>
-					</h3>
-
-					<form action="#" class="row g-3">
-						<div class="col-auto">
-							<input type="text" class="form-control" placeholder="Enter your name">
-						</div>
-						<div class="col-auto">
-							<input type="email" class="form-control" placeholder="Enter your email">
-						</div>
-						<div class="col-auto">
-							<button class="btn btn-primary">
-								<span class="fa fa-paper-plane"></span>
-							</button>
-						</div>
-					</form>
-
-				</div>
-			</div>
-		</div>
-
-		<div class="row g-5 mb-5">
-			<div class="col-lg-4">
-				<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Uzika Agro<span>.</span></a></div>
-				<p class="mb-4">We provide premium roasted coffee beans and high-quality nuts sourced from trusted farms. Freshness, quality, and customer satisfaction are at the heart of everything we do.</p>
-
-				<ul class="list-unstyled custom-social">
-					<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
-					<li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
-					<li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
-					<li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
-				</ul>
-			</div>
-
-			<div class="col-lg-8">
-				<div class="row links-wrap">
-					
-					<div class="col-6 col-sm-6 col-md-3">
-						<ul class="list-unstyled">
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Our Products</a></li>
-							<li><a href="#">Wholesale</a></li>
-							<li><a href="#">Contact</a></li>
-						</ul>
-					</div>
-
-					<div class="col-6 col-sm-6 col-md-3">
-						<ul class="list-unstyled">
-							<li><a href="#">Customer Support</a></li>
-							<li><a href="#">FAQs</a></li>
-							<li><a href="#">Shipping Info</a></li>
-						</ul>
-					</div>
-
-					<div class="col-6 col-sm-6 col-md-3">
-						<ul class="list-unstyled">
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">Our Team</a></li>
-							<li><a href="#">Sustainability</a></li>
-							<li><a href="#">Privacy Policy</a></li>
-						</ul>
-					</div>
-
-					<div class="col-6 col-sm-6 col-md-3">
-						<ul class="list-unstyled">
-							<li><a href="#">Arabica Coffee</a></li>
-							<li><a href="#">Robusta Coffee</a></li>
-							<li><a href="#">Premium Nuts</a></li>
-						</ul>
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-
-		<div class="border-top copyright">
-			<div class="row pt-4">
-				<div class="col-lg-6">
-					<p class="mb-2 text-center text-lg-start">
-						Copyright &copy;
-						<script>document.write(new Date().getFullYear());</script>. 
-						All Rights Reserved. &mdash; Crafted with care by EvMak Tz.
-					</p>
-				</div>
-
-				<div class="col-lg-6 text-center text-lg-end">
-					<ul class="list-unstyled d-inline-flex ms-auto">
-						<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
-						<li><a href="#">Privacy Policy</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-
-	</div>
-</footer>
-<!-- End Footer Section -->
-
-
-		<script src="js/bootstrap.bundle.min.js"></script>
-		<script src="js/tiny-slider.js"></script>
-		<script src="js/custom.js"></script>
-		<!-- ==== SCROLL REVEAL SCRIPT (added) ==== -->
+  <!-- Scroll Reveal Script (exactly as you had it) -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const reveals = document.querySelectorAll(".scroll-reveal");
-
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -572,13 +395,8 @@
         threshold: 0.15,
         rootMargin: "0px 0px -100px 0px"
       });
-
       reveals.forEach(el => observer.observe(el));
     });
   </script>
-  <!-- ==== END SCROLL REVEAL SCRIPT ==== -->
-	</body>
-
+</body>
 </html>
-
-
