@@ -1,154 +1,138 @@
-<!-- /*
-* Bootstrap 5
-* Template Name: Furni
-* Template Author: Untree.co
-* Template URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="Untree.co">
+  <meta name="author" content="ProPlus">
   <link rel="shortcut icon" href="favicon.png">
 
-  <meta name="description" content="" />
-  <meta name="keywords" content="bootstrap, bootstrap4" />
+  <meta name="description" content="Your shopping cart - ProPlus" />
+  <meta name="keywords" content="cart, shopping, nuts, coffee, proplus" />
 
-		<!-- Bootstrap CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-		<link href="css/tiny-slider.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet">
-		<title>Proplus. </title>
-	</head>
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="css/tiny-slider.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
-	<body>
+  <title>Cart – ProPlus</title>
+</head>
 
-		<!-- Start Header/Navigation -->
-		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+<body>
 
-			<div class="container">
-				<a class="navbar-brand" href="index.html">Proplus<span>.</span></a>
+  <!-- Start Header/Navigation -->
+  <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="ProPlus navigation bar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Proplus<span>.</span></a>
 
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-				<div class="collapse navbar-collapse" id="navbarsFurni">
-					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li class="nav-item ">
-							<a class="nav-link" href="index.html">Home</a>
-						</li>
-						<li><a class="nav-link" href="shop.html">Shop</a></li>
-						<li><a class="nav-link" href="about.html">About us</a></li>
-						<li><a class="nav-link" href="services.html">Services</a></li>
-						<!-- <li><a class="nav-link" href="blog.html">Blog</a></li> -->
-						<li><a class="nav-link" href="contact.html">Contact us</a></li>
-					</ul>
+      <div class="collapse navbar-collapse" id="navbarsFurni">
+        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="shop.html">Shop</a></li>
+          <li><a class="nav-link" href="about.html">About us</a></li>
+          <li><a class="nav-link" href="services.html">Services</a></li>
+          <li><a class="nav-link" href="contact.html">Contact us</a></li>
+        </ul>
 
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<!-- <li><a class="nav-link" href="#"><img src="images/user.svg"></a></li> -->
-						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
-					</ul>
-				</div>
-			</div>
-				
-		</nav>
-		<!-- End Header/Navigation -->
-
-		<!-- Start Hero Section -->
-			<div class="hero">
-				<div class="container">
-					<div class="row justify-content-between">
-						<div class="col-lg-5">
-							<div class="intro-excerpt">
-								<h1>Cart</h1>
-							</div>
-						</div>
-						<div class="col-lg-7">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		<!-- End Hero Section -->
-
-<!-- ... head, nav, hero same as your original cart.html ... -->
-
-<div class="untree_co-section before-footer-section">
-  <div class="container">
-    <div class="row mb-5">
-      <div class="col-md-12">
-        <div class="site-blocks-table">
-          <table class="table">
-            <thead>
-              <tr>
-                <th class="product-thumbnail">Image</th>
-                <th class="product-name">Product</th>
-                <th class="product-price">Price</th>
-                <th class="product-quantity">Quantity</th>
-                <th class="product-total">Total</th>
-                <th class="product-remove">Remove</th>
-              </tr>
-            </thead>
-            <tbody id="cart-items">
-              <!-- Filled dynamically -->
-            </tbody>
-          </table>
-        </div>
+        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+          <li><a class="nav-link" href="cart.html"><img src="images/cart.svg" alt="Cart"></a></li>
+        </ul>
       </div>
     </div>
+  </nav>
+  <!-- End Header/Navigation -->
 
-    <div class="row">
-      <div class="col-md-6">
-        <!-- Coupon & buttons (keep as is) -->
-        <div class="row mb-5">
-          <div class="col-md-6 mb-3 mb-md-0">
-            <button class="btn btn-black btn-sm btn-block" id="update-cart">Update Cart</button>
-          </div>
-          <div class="col-md-6">
-            <a href="shop.html" class="btn btn-outline-black btn-sm btn-block">Continue Shopping</a>
+  <!-- Start Hero Section -->
+  <div class="hero">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-5">
+          <div class="intro-excerpt">
+            <h1>Cart</h1>
           </div>
         </div>
+        <div class="col-lg-7"></div>
+      </div>
+    </div>
+  </div>
+  <!-- End Hero Section -->
 
-        <!-- Coupon section (optional – can be enhanced later) -->
-        <div class="row">
-          <div class="col-md-12">
-            <label class="text-black h4" for="coupon">Coupon</label>
-            <p>Enter your coupon code if you have one.</p>
-          </div>
-          <div class="col-md-8 mb-3 mb-md-0">
-            <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-          </div>
-          <div class="col-md-4">
-            <button class="btn btn-black">Apply Coupon</button>
+  <div class="untree_co-section before-footer-section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-12">
+          <div class="site-blocks-table">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="product-thumbnail">Image</th>
+                  <th class="product-name">Product</th>
+                  <th class="product-price">Price</th>
+                  <th class="product-quantity">Quantity</th>
+                  <th class="product-total">Total</th>
+                  <th class="product-remove">Remove</th>
+                </tr>
+              </thead>
+              <tbody id="cart-items">
+                <!-- Items will be inserted here -->
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
 
-      <div class="col-md-6 pl-5">
-        <div class="row justify-content-end">
-          <div class="col-md-7">
-            <div class="row">
-              <div class="col-md-12 text-right border-bottom mb-5">
-                <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row mb-5">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <button class="btn btn-black btn-sm btn-block" id="update-cart">Update Cart</button>
+            </div>
+            <div class="col-md-6">
+              <a href="shop.html" class="btn btn-outline-black btn-sm btn-block">Continue Shopping</a>
+            </div>
+          </div>
+
+          <!-- Coupon (optional – placeholder) -->
+          <div class="row">
+            <div class="col-md-12">
+              <!-- <label class="text-black h4" for="coupon">Coupon</label>
+              <p>Enter your coupon code if you have one.</p>
+            </div>
+            <div class="col-md-8 mb-3 mb-md-0">
+              <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-black">Apply Coupon</button> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 pl-5">
+          <div class="row justify-content-end">
+            <div class="col-md-7">
+              <div class="row">
+                <div class="col-md-12 text-right border-bottom mb-5">
+                  <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                </div>
               </div>
-            </div>
-            <div class="row mb-3" id="subtotal-row">
-              <div class="col-md-6"><span class="text-black">Subtotal</span></div>
-              <div class="col-md-6 text-right"><strong id="subtotal">TSh 0</strong></div>
-            </div>
-            <div class="row mb-5">
-              <div class="col-md-6"><span class="text-black">Total</span></div>
-              <div class="col-md-6 text-right"><strong id="total">TSh 0</strong></div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.html'">
-                  Proceed To Checkout
-                </button>
+              <div class="row mb-3">
+                <div class="col-md-6"><span class="text-black">Subtotal</span></div>
+                <div class="col-md-6 text-right"><strong id="subtotal">TSh 0</strong></div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-6"><span class="text-black">Total</span></div>
+                <div class="col-md-6 text-right"><strong id="total">TSh 0</strong></div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.html'">
+                    Proceed To Checkout
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -156,105 +140,14 @@
       </div>
     </div>
   </div>
-</div>
+	
 
-<!-- Footer same -->
-
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/tiny-slider.js"></script>
-<script src="js/custom.js"></script>
-
-<script>
-// Cart logic
-function renderCart() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const tbody = document.getElementById('cart-items');
-  tbody.innerHTML = '';
-
-  let subtotal = 0;
-
-  if (cart.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="6" class="text-center py-5">Your cart is empty. <a href="shop.html">Shop now</a></td></tr>';
-    document.getElementById('subtotal').textContent = 'TSh 0';
-    document.getElementById('total').textContent = 'TSh 0';
-    return;
-  }
-
-  cart.forEach((item, index) => {
-    const rowTotal = item.price * item.quantity;
-    subtotal += rowTotal;
-
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td class="product-thumbnail">
-        <img src="${item.image}" alt="${item.name}" class="img-fluid">
-      </td>
-      <td class="product-name">
-        <h2 class="h5 text-black">${item.name}</h2>
-      </td>
-      <td>TSh ${item.price.toLocaleString()}</td>
-      <td>
-        <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-          <div class="input-group-prepend">
-            <button class="btn btn-outline-black decrease" data-index="${index}">-</button>
-          </div>
-          <input type="text" class="form-control text-center quantity-amount" value="${item.quantity}" readonly>
-          <div class="input-group-append">
-            <button class="btn btn-outline-black increase" data-index="${index}">+</button>
-          </div>
-        </div>
-      </td>
-      <td>TSh ${rowTotal.toLocaleString()}</td>
-      <td><button class="btn btn-danger btn-sm remove-item" data-index="${index}">X</button></td>
-    `;
-    tbody.appendChild(tr);
-  });
-
-  document.getElementById('subtotal').textContent = `TSh ${subtotal.toLocaleString()}`;
-  document.getElementById('total').textContent   = `TSh ${subtotal.toLocaleString()}`;
-}
-
-// Quantity change & remove
-document.addEventListener('click', (e) => {
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-  if (e.target.classList.contains('increase')) {
-    const index = parseInt(e.target.dataset.index);
-    cart[index].quantity += 1;
-  }
-  else if (e.target.classList.contains('decrease')) {
-    const index = parseInt(e.target.dataset.index);
-    if (cart[index].quantity > 1) {
-      cart[index].quantity -= 1;
-    }
-  }
-  else if (e.target.classList.contains('remove-item')) {
-    const index = parseInt(e.target.dataset.index);
-    cart.splice(index, 1);
-  }
-  else {
-    return;
-  }
-
-  localStorage.setItem('cart', JSON.stringify(cart));
-  renderCart();
-});
-
-// Initial render
-renderCart();
-
-// Optional: Update cart button (can be used later for coupon etc.)
-document.getElementById('update-cart')?.addEventListener('click', renderCart);
-</script>
-
-</body>
-</html>
 <!-- Start Footer Section -->
 <footer class="footer-section">
 	<div class="container relative">
 
 		<div class="sofa-img">
-			<img src="images/cashew.png" alt="Image" class="img-fluid">
+			<img src="images/15.png" alt="Image" class="img-fluid">
 		</div>
 
 		<div class="row">
@@ -262,7 +155,8 @@ document.getElementById('update-cart')?.addEventListener('click', renderCart);
 				<div class="subscription-form">
 					<h3 class="d-flex align-items-center">
 						<span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span>
-						<span>Subscribe for Fresh Coffee & Nuts Updates</span>
+						<span>New arrivals, health essentials, and offers sent occasionally.</span>
+						
 					</h3>
 
 					<form action="#" class="row g-3">
@@ -286,7 +180,9 @@ document.getElementById('update-cart')?.addEventListener('click', renderCart);
 		<div class="row g-5 mb-5">
 			<div class="col-lg-4">
 				<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Proplus<span>.</span></a></div>
-				<p class="mb-4">We provide premium roasted coffee beans and high-quality nuts sourced from trusted farms. Freshness, quality, and customer satisfaction are at the heart of everything we do.</p>
+				<p class="mb-4">Proplus. We provide trusted pharmaceutical and health products with a focus on quality, safety, and reliable service.</p>
+				
+
 
 				<ul class="list-unstyled custom-social">
 					<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
@@ -301,36 +197,49 @@ document.getElementById('update-cart')?.addEventListener('click', renderCart);
 					
 					<div class="col-6 col-sm-6 col-md-3">
 						<ul class="list-unstyled">
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Our Products</a></li>
-							<li><a href="#">Wholesale</a></li>
-							<li><a href="#">Contact</a></li>
+							<li><a href="shop.html">Shop</a></li>
+							<li><a href="about.html">About Us</a></li>
+							<li><a href="terms.html">Terms and conditions</a></li>
+							<!-- <li><a href="services.html">Services</a></li> -->
 						</ul>
 					</div>
 
 					<div class="col-6 col-sm-6 col-md-3">
 						<ul class="list-unstyled">
-							<li><a href="#">Customer Support</a></li>
-							<li><a href="#">FAQs</a></li>
-							<li><a href="#">Shipping Info</a></li>
+							<li><a href="contact.html">Customer Support</a></li>
+							<li><a href="about.html">FAQs</a></li>
+							<li><a href="checkout.html">Payments</a></li>
 						</ul>
 					</div>
 
 					<div class="col-6 col-sm-6 col-md-3">
 						<ul class="list-unstyled">
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">Our Team</a></li>
-							<li><a href="#">Sustainability</a></li>
-							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="shop.html">Shop</a></li>
+							<li><a href="#">Categories</a></li>
+								<li><a href="services.html">Services</a></li>
+						
+							
 						</ul>
 					</div>
 
 					<div class="col-6 col-sm-6 col-md-3">
 						<ul class="list-unstyled">
-							<li><a href="#">Arabica Coffee</a></li>
-							<li><a href="#">Robusta Coffee</a></li>
-							<li><a href="#">Premium Nuts</a></li>
-						</ul>
+    <li>
+      <a href="https://wa.me/+255782911424?text=Habari%2C%20nina%20swali%20kwa%20bidhaa%20zenu" target="_blank" rel="noopener noreferrer">
+        WhatsApp
+      </a>
+    </li>
+    <li>
+      <a href="mailto:: info@proplus.co.tz?subject=Swali%20kutoka%20tovuti">
+        Email
+      </a>
+    </li>
+    <li>
+      <a href="tel:+255 782 911 424">
+        Phone
+      </a>
+    </li>
+  </ul>
 					</div>
 
 				</div>
@@ -350,8 +259,8 @@ document.getElementById('update-cart')?.addEventListener('click', renderCart);
 
 				<div class="col-lg-6 text-center text-lg-end">
 					<ul class="list-unstyled d-inline-flex ms-auto">
-						<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
-						<li><a href="#">Privacy Policy</a></li>
+						<li class="me-4"><a href="terms.html">Terms &amp; Conditions</a></li>
+						<li><a href="terms.html">Privacy Policy</a></li>
 					</ul>
 				</div>
 
@@ -361,9 +270,133 @@ document.getElementById('update-cart')?.addEventListener('click', renderCart);
 	</div>
 </footer>
 <!-- End Footer Section -->
-		<script src="js/bootstrap.bundle.min.js"></script>
-		<script src="js/tiny-slider.js"></script>
-		<script src="js/custom.js"></script>
-	</body>
 
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/tiny-slider.js"></script>
+  <script src="js/custom.js"></script>
+
+  <!-- Cart Logic -->
+  <script>
+  // ───────────────────────────────────────────────
+  // Cart Functions (same format as shop page)
+  // ───────────────────────────────────────────────
+  function getCart() {
+    try {
+      return JSON.parse(localStorage.getItem('cart') || '[]');
+    } catch {
+      return [];
+    }
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  function formatPrice(price) {
+    return 'TSh ' + Number(price).toLocaleString('en-US');
+  }
+
+  // ───────────────────────────────────────────────
+  // Render Cart Table
+  // ───────────────────────────────────────────────
+  function renderCart() {
+    const cart = getCart();
+    const tbody = document.getElementById('cart-items');
+    if (!tbody) return;
+
+    tbody.innerHTML = '';
+
+    let subtotal = 0;
+
+    if (cart.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="6" class="text-center py-5">
+            Your cart is empty. <a href="shop.html" class="text-primary">Shop now</a>
+          </td>
+        </tr>
+      `;
+      document.getElementById('subtotal').textContent = 'TSh 0';
+      document.getElementById('total').textContent = 'TSh 0';
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      const itemTotal = item.price * (item.quantity || 1);
+      subtotal += itemTotal;
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="product-thumbnail">
+          <img src="${item.image || 'images/placeholder.png'}" alt="${item.name}" class="img-fluid">
+        </td>
+        <td class="product-name">
+          <h2 class="h5 text-black">${item.name}</h2>
+        </td>
+        <td>${formatPrice(item.price)}</td>
+        <td>
+          <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-black decrease" data-index="${index}">-</button>
+            </div>
+            <input type="text" class="form-control text-center quantity-amount" value="${item.quantity || 1}" readonly>
+            <div class="input-group-append">
+              <button class="btn btn-outline-black increase" data-index="${index}">+</button>
+            </div>
+          </div>
+        </td>
+        <td>${formatPrice(itemTotal)}</td>
+        <td>
+          <button class="btn btn-danger btn-sm remove-item" data-index="${index}">X</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    document.getElementById('subtotal').textContent = formatPrice(subtotal);
+    document.getElementById('total').textContent   = formatPrice(subtotal);
+  }
+
+  // ───────────────────────────────────────────────
+  // Event delegation for quantity & remove
+  // ───────────────────────────────────────────────
+  document.addEventListener('click', function(e) {
+    let cart = getCart();
+
+    if (e.target.classList.contains('increase')) {
+      const index = parseInt(e.target.dataset.index);
+      if (cart[index]) {
+        cart[index].quantity = (cart[index].quantity || 1) + 1;
+      }
+    }
+    else if (e.target.classList.contains('decrease')) {
+      const index = parseInt(e.target.dataset.index);
+      if (cart[index] && cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+      }
+    }
+    else if (e.target.classList.contains('remove-item')) {
+      const index = parseInt(e.target.dataset.index);
+      cart.splice(index, 1);
+    }
+    else {
+      return;
+    }
+
+    saveCart(cart);
+    renderCart();
+  });
+
+  // ───────────────────────────────────────────────
+  // Initialize
+  // ───────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', function() {
+    renderCart();
+
+    // Update cart button
+    document.getElementById('update-cart')?.addEventListener('click', renderCart);
+  });
+  </script>
+
+</body>
 </html>

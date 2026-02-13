@@ -75,95 +75,264 @@
 				</div>
 			</div>
 		<!-- End Hero Section -->
+<!-- Products -->
+<div class="untree_co-section product-section before-footer-section">
+  <div class="container">
+    <div class="row" id="products-row">
 
-		<!-- Products -->
-  <div class="untree_co-section product-section before-footer-section">
-    <div class="container">
-      <div class="row">
-
-        <!-- Product 1 -->
-        <div class="col-12 col-md-4 col-lg-3 mb-5">
-          <div class="product-item">
-            <img src="images/arabica.png" class="img-fluid product-thumbnail" alt="Arabica Coffee">
-            <h3 class="product-title">Arabica Coffee (250g)</h3>
-            <strong class="product-price">TSh 12,000</strong>
-
-            <button 
-              class="btn btn-sm btn-outline-success add-to-cart mt-2 w-100"
-              data-id="arabica-250"
-              data-name="Arabica Coffee (250g)"
-              data-price="12000"
-              data-image="images/arabica.png">
-              <i class="fas fa-plus me-1"></i> Add to Cart
-            </button>
-          </div>
+      <!-- Loading state -->
+      <div id="products-loading" class="col-12 text-center py-5 my-5">
+        <div class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
-
-        <!-- Product 2 -->
-        <div class="col-12 col-md-4 col-lg-3 mb-5">
-          <div class="product-item">
-            <img src="images/robusta.png" class="img-fluid product-thumbnail" alt="Robusta Coffee">
-            <h3 class="product-title">Robusta Coffee (500g)</h3>
-            <strong class="product-price">TSh 18,000</strong>
-
-            <button 
-              class="btn btn-sm btn-outline-success add-to-cart mt-2 w-100"
-              data-id="robusta-500"
-              data-name="Robusta Coffee (500g)"
-              data-price="18000"
-              data-image="images/robusta.png">
-              <i class="fas fa-plus me-1"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-
-        <!-- Product 3 – add more the same way -->
-        <div class="col-12 col-md-4 col-lg-3 mb-5">
-          <div class="product-item">
-            <img src="images/cashew.png" class="img-fluid product-thumbnail" alt="Cashew Nuts">
-            <h3 class="product-title">Premium Cashew (300g)</h3>
-            <strong class="product-price">TSh 15,000</strong>
-
-            <button 
-              class="btn btn-sm btn-outline-success add-to-cart mt-2 w-100"
-              data-id="cashew-300"
-              data-name="Premium Cashew (300g)"
-              data-price="15000"
-              data-image="images/cashew.png">
-              <i class="fas fa-plus me-1"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-		 <!-- Product 3 – add more the same way -->
-        <div class="col-12 col-md-4 col-lg-3 mb-5">
-          <div class="product-item">
-            <img src="images/cashew.png" class="img-fluid product-thumbnail" alt="Cashew Nuts">
-            <h3 class="product-title">Premium Cashew (300g)</h3>
-            <strong class="product-price">TSh 15,000</strong>
-
-            <button 
-              class="btn btn-sm btn-outline-success add-to-cart mt-2 w-100"
-              data-id="cashew-300"
-              data-name="Premium Cashew (300g)"
-              data-price="15000"
-              data-image="images/cashew.png">
-              <i class="fas fa-plus me-1"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-
-        <!-- Add more products here... -->
-
+        <p class="mt-3 fw-medium text-muted">Loading products...</p>
       </div>
+
+      <!-- Error state -->
+      <div id="products-error" class="col-12 text-center py-5 my-5 d-none">
+        <i class="fas fa-exclamation-triangle fa-3x text-danger mb-3"></i>
+        <h5 class="text-danger mb-2">Failed to load products</h5>
+        <p id="products-error-text" class="text-muted mb-4"></p>
+        <button class="btn btn-outline-secondary px-4" onclick="loadProducts()">Try Again</button>
+      </div>
+
+      <!-- No products message -->
+      <div id="no-products" class="col-12 text-center py-5 my-5 d-none">
+        <h5 class="text-muted">No products available at the moment</h5>
+      </div>
+
     </div>
   </div>
+</div>
 
+<!-- Your original compact card styles – unchanged -->
+<style>
+  .small-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(40,167,69,0.18);
+  }
+  .small-thumb {
+    height: 190px;
+    width: 190px;
+    object-fit: contain;
+    margin: 0 auto 10px;
+    display: block;
+  }
+  .small-title {
+    font-size: 0.95rem;
+    margin: 8px 0 4px;
+    font-weight: 600;
+    line-height: 1.2;
+    height: 2.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .small-price {
+    font-size: 1.05rem;
+    color: #2e7d32;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .btn-modern {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #28a745;
+    background: transparent;
+    color: #28a745;
+    transition: all 0.25s ease;
+    min-width: 0;
+  }
+  .btn-modern:hover {
+    background: #28a745;
+    color: white;
+    transform: scale(1.06);
+    box-shadow: 0 3px 8px rgba(40,167,69,0.3);
+  }
+  .view-more {
+    border-color: #2f855a;
+    color: #2f855a;
+  }
+  .view-more:hover {
+    background: #2f855a;
+  }
+  .add-to-cart {
+    font-weight: 700;
+  }
+  /* Success feedback style */
+  .add-to-cart.success {
+    background: #28a745 !important;
+    color: white !important;
+    border-color: #218838;
+    transform: scale(1.1);
+  }
+  @media (max-width: 576px) {
+    .small-thumb { height: 100px; width: 100px; }
+    .small-title  { font-size: 0.9rem; }
+    .small-price { font-size: 1rem; }
+    .btn-modern  { padding: 5px 8px; font-size: 0.75rem; }
+    .d-flex.gap-2 { gap: 0.35rem !important; }
+  }
+</style>
+
+<!-- JavaScript: Fetch + render + smooth add-to-cart feedback -->
+<script>
+// Cart storage functions
+function getCart() {
+  try {
+    return JSON.parse(localStorage.getItem('cart') || '[]');
+  } catch {
+    return [];
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function addToCart(item) {
+  let cart = getCart();
+  
+  // Check if item already exists (by slug)
+  const existing = cart.find(i => i.slug === item.slug);
+  if (existing) {
+    existing.quantity = (existing.quantity || 1) + 1;
+  } else {
+    cart.push({ ...item, quantity: 1 });
+  }
+
+  saveCart(cart);
+  // No alert anymore
+}
+
+// Load products from API
+async function loadProducts() {
+  const row = document.getElementById('products-row');
+  const loading = document.getElementById('products-loading');
+  const errorDiv = document.getElementById('products-error');
+  const errorText = document.getElementById('products-error-text');
+  const noProducts = document.getElementById('no-products');
+
+  row.querySelectorAll('.product-col').forEach(el => el.remove());
+  loading.classList.remove('d-none');
+  errorDiv.classList.add('d-none');
+  noProducts.classList.add('d-none');
+
+  try {
+    const response = await fetch('http://127.0.0.1:8000/api/v1/products', {
+      method: 'GET',
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const json = await response.json();
+    const products = json.data || [];
+
+    loading.classList.add('d-none');
+
+    if (products.length === 0) {
+      noProducts.classList.remove('d-none');
+      return;
+    }
+
+    products.forEach(product => {
+      const col = document.createElement('div');
+      col.className = 'col-6 col-md-4 col-lg-3 mb-4 product-col';
+      col.innerHTML = `
+        <div class="product-item small-card">
+          <img src="${product.thumbnail || product.image || 'images/placeholder.png'}"
+               class="img-fluid product-thumbnail small-thumb"
+               alt="${product.name}"
+               loading="lazy"
+               onerror="this.src='images/placeholder.png'; this.alt='Image not available';">
+
+          <h3 class="product-title small-title">${product.name}</h3>
+          <strong class="product-price small-price">${product.formatted_price || 'TSh ' + product.price.toLocaleString()}</strong>
+
+          <div class="d-flex gap-2 mt-2">
+            <a href="details.html?slug=${product.slug}"
+               class="btn-modern view-more w-50"
+               title="View details">
+              <i class="fas fa-eye"></i>
+            </a>
+
+            <button class="btn-modern add-to-cart w-50"
+                    data-slug="${product.slug}"
+                    data-name="${product.name.replace(/"/g, '&quot;')}"
+                    data-price="${product.price}"
+                    data-image="${product.image || product.thumbnail}"
+                    title="Add to cart">
+              <i class="fas fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+      `;
+
+      row.appendChild(col);
+    });
+
+  } catch (error) {
+    console.error('Products fetch failed:', error);
+    loading.classList.add('d-none');
+    errorText.textContent = error.message.includes('fetch')
+      ? 'Cannot connect to server. Is Laravel running?'
+      : error.message;
+    errorDiv.classList.remove('d-none');
+  }
+}
+
+// Add to cart with visual feedback (green tick for 2 seconds)
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.add-to-cart');
+  if (!btn) return;
+
+  e.preventDefault();
+
+  const item = {
+    slug:  btn.dataset.slug,
+    name:  btn.dataset.name,
+    price: Number(btn.dataset.price),
+    image: btn.dataset.image
+  };
+
+  if (!item.slug || !item.name || isNaN(item.price)) {
+    console.warn('Invalid product data');
+    return;
+  }
+
+  // Add to cart logic
+  addToCart(item);
+
+  // Visual success feedback
+  const originalHTML = btn.innerHTML;
+  btn.classList.add('success');
+  btn.innerHTML = '<i class="fas fa-check"></i>';
+
+  // Revert after 2 seconds
+  setTimeout(() => {
+    btn.classList.remove('success');
+    btn.innerHTML = originalHTML;
+  }, 2000);
+});
+
+// Load products when page is ready
+document.addEventListener('DOMContentLoaded', loadProducts);
+</script>
 <!-- Start Footer Section -->
 <footer class="footer-section">
 	<div class="container relative">
 
 		<div class="sofa-img">
-			<img src="images/mongi.png" alt="Image" class="img-fluid">
+			<img src="images/15.png" alt="Image" class="img-fluid">
 		</div>
 
 		<div class="row">
@@ -171,7 +340,8 @@
 				<div class="subscription-form">
 					<h3 class="d-flex align-items-center">
 						<span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span>
-						<span>Subscribe for Fresh Coffee & Nuts Updates</span>
+						<span>New arrivals, health essentials, and offers sent occasionally.</span>
+						
 					</h3>
 
 					<form action="#" class="row g-3">
@@ -195,7 +365,9 @@
 		<div class="row g-5 mb-5">
 			<div class="col-lg-4">
 				<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Proplus<span>.</span></a></div>
-				<p class="mb-4">We provide premium roasted coffee beans and high-quality nuts sourced from trusted farms. Freshness, quality, and customer satisfaction are at the heart of everything we do.</p>
+				<p class="mb-4">Proplus. We provide trusted pharmaceutical and health products with a focus on quality, safety, and reliable service.</p>
+				
+
 
 				<ul class="list-unstyled custom-social">
 					<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
@@ -210,36 +382,49 @@
 					
 					<div class="col-6 col-sm-6 col-md-3">
 						<ul class="list-unstyled">
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Our Products</a></li>
-							<li><a href="#">Wholesale</a></li>
-							<li><a href="#">Contact</a></li>
+							<li><a href="shop.html">Shop</a></li>
+							<li><a href="about.html">About Us</a></li>
+							<li><a href="terms.html">Terms and conditions</a></li>
+							<!-- <li><a href="services.html">Services</a></li> -->
 						</ul>
 					</div>
 
 					<div class="col-6 col-sm-6 col-md-3">
 						<ul class="list-unstyled">
-							<li><a href="#">Customer Support</a></li>
-							<li><a href="#">FAQs</a></li>
-							<li><a href="#">Shipping Info</a></li>
+							<li><a href="contact.html">Customer Support</a></li>
+							<li><a href="about.html">FAQs</a></li>
+							<li><a href="checkout.html">Payments</a></li>
 						</ul>
 					</div>
 
 					<div class="col-6 col-sm-6 col-md-3">
 						<ul class="list-unstyled">
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">Our Team</a></li>
-							<li><a href="#">Sustainability</a></li>
-							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="shop.html">Shop</a></li>
+							<li><a href="#">Categories</a></li>
+								<li><a href="services.html">Services</a></li>
+						
+							
 						</ul>
 					</div>
 
 					<div class="col-6 col-sm-6 col-md-3">
 						<ul class="list-unstyled">
-							<li><a href="#">Arabica Coffee</a></li>
-							<li><a href="#">Robusta Coffee</a></li>
-							<li><a href="#">Premium Nuts</a></li>
-						</ul>
+    <li>
+      <a href="https://wa.me/+255782911424?text=Habari%2C%20nina%20swali%20kwa%20bidhaa%20zenu" target="_blank" rel="noopener noreferrer">
+        WhatsApp
+      </a>
+    </li>
+    <li>
+      <a href="mailto:: info@proplus.co.tz?subject=Swali%20kutoka%20tovuti">
+        Email
+      </a>
+    </li>
+    <li>
+      <a href="tel:+255 782 911 424">
+        Phone
+      </a>
+    </li>
+  </ul>
 					</div>
 
 				</div>
@@ -259,8 +444,8 @@
 
 				<div class="col-lg-6 text-center text-lg-end">
 					<ul class="list-unstyled d-inline-flex ms-auto">
-						<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
-						<li><a href="#">Privacy Policy</a></li>
+						<li class="me-4"><a href="terms.html">Terms &amp; Conditions</a></li>
+						<li><a href="terms.html">Privacy Policy</a></li>
 					</ul>
 				</div>
 
@@ -270,6 +455,8 @@
 	</div>
 </footer>
 <!-- End Footer Section -->
+
+
 		<script src="js/bootstrap.bundle.min.js"></script>
 		<script src="js/tiny-slider.js"></script>
 		<script src="js/custom.js"></script>
