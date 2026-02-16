@@ -42,7 +42,7 @@
         </ul>
 
         <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-          <li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
+          <!-- <li><a class="nav-link" href="#"><img src="images/user.svg"></a></li> -->
           <li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
         </ul>
       </div>
@@ -64,7 +64,8 @@
     </div>
   </div>
   <!-- End Hero Section -->
-<!-- Compact Modern Product Detail Section -->
+
+  <!-- Compact Modern Product Detail Section -->
   <div class="untree_co-section py-4 bg-light">
     <div class="container">
       <div class="row justify-content-center">
@@ -90,14 +91,14 @@
             <a href="shop.html" class="btn btn-outline-secondary px-4">Back to Shop</a>
           </div>
 
-          <!-- Main product content (hidden until loaded) -->
+          <!-- Main product content -->
           <div id="product-content" class="d-none">
             <div class="row g-4 align-items-start">
 
               <!-- Image -->
               <div class="col-lg-6">
                 <img id="product-image" src="" alt="" class="img-fluid w-100 rounded-3 shadow-sm"
-                     onerror="this.src='images/placeholder.png'; this.alt='Image not available';">
+                     loading="lazy">
               </div>
 
               <!-- Info -->
@@ -124,7 +125,7 @@
                     </div>
                   </div>
 
-                  <!-- Action buttons -->
+                  <!-- Action buttons – unchanged design -->
                   <div class="d-grid gap-2" style="grid-template-columns: 1fr 1fr;">
                     <button id="add-to-cart-btn" class="btn btn-primary rounded-pill py-2 px-3 fw-medium shadow-sm small" style="font-size:0.95rem;">
                       <i class="fa fa-shopping-cart me-1"></i> Add to Cart
@@ -144,103 +145,162 @@
     </div>
   </div>
 
-  <!-- Minimal additional CSS (your original + small improvements) -->
-  <style>
-    .shadow-sm { box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important; }
-    .rounded-3 { border-radius: 0.75rem !important; }
-    .btn-sm, .small { font-size: 0.875rem !important; }
-    .input-group-sm .btn { padding: 0.25rem 0.75rem; }
-    .input-group-sm .form-control { padding: 0.25rem 0.5rem; font-size: 0.9rem; }
-    .bg-light { background-color: #f8f9fa !important; }
-    #product-image { max-height: 480px; object-fit: contain; }
-  </style>
-
-  <!-- JavaScript: Fetch product by slug -->
+  <!-- JavaScript -->
   <script>
-  document.addEventListener('DOMContentLoaded', async () => {
-    const loading = document.getElementById('loading-state');
-    const errorDiv = document.getElementById('error-state');
-    const errorMsg = document.getElementById('error-message');
-    const content = document.getElementById('product-content');
 
-    // Hide content & error initially
-    content.classList.add('d-none');
-    errorDiv.classList.add('d-none');
+    // Safe image URL – unchanged from previous fix
+    function getProductImageUrl(path) {
+      const API_BASE = 'http://127.0.0.1:8000';
 
-    // Get slug from URL (?slug=...)
-    const urlParams = new URLSearchParams(window.location.search);
-    const slug = urlParams.get('slug');
-
-    if (!slug) {
-      loading.classList.add('d-none');
-      errorMsg.textContent = 'No product selected. Please choose a product from the shop.';
-      errorDiv.classList.remove('d-none');
-      return;
-    }
-
-    try {
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/products/${slug}`, {
-        method: 'GET',
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (!response.ok) {
-        throw new Error(response.status === 404 ? 'Product not found' : `Server error (${response.status})`);
+      if (!path || typeof path !== 'string') {
+        return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgwIiBoZWlnaHQ9IjQ4MCIgdmlld0JveD0iMCAwIDQ4MCA0ODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQ4MCIgaGVpZ2h0PSI0ODAiIGZpbGw9IiNmMGYwZjAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9J3NhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMzJweCIgZmlsbD0iIzY2NiI+SW1hZ2UgTm90IEF2YWlsYWJsZTwvdGV4dD48L3N2Zz4=';
       }
 
-      const json = await response.json();
-      const product = json.data;
+      let clean = path.trim()
+        .replace(/^https?:\/\/[^/]+\/?/i, '')
+        .replace(/^\/?storage\//i, '')
+        .replace(/^storage\//i, '');
 
-      if (!product || !product.is_active) {
-        throw new Error('Product not available');
+      return `${API_BASE}/storage/${clean}`;
+    }
+
+    // Cart functions
+    function getCart() {
+      try {
+        return JSON.parse(localStorage.getItem('cart') || '[]');
+      } catch {
+        return [];
+      }
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function addToCart(item) {
+      let cart = getCart();
+      const existing = cart.find(i => i.slug === item.slug);
+
+      if (existing) {
+        existing.quantity = (existing.quantity || 1) + item.quantity;
+      } else {
+        cart.push(item);
       }
 
-      // Update page content
-      document.title = `${product.name} - ProPlus`;
-
-      document.getElementById('product-name').textContent = product.name;
-      document.getElementById('product-price').textContent = product.formatted_price;
-      document.getElementById('product-image').src = product.image || product.thumbnail || 'images/placeholder.png';
-      document.getElementById('product-image').alt = product.name;
-      document.getElementById('product-description').textContent = product.description || 'No description available.';
-
-      // Stock badge
-      const badge = document.getElementById('stock-badge');
-      badge.textContent = product.is_active ? 'In stock' : 'Out of stock';
-      badge.className = `badge bg-${product.is_active ? 'success' : 'danger'}-subtle text-${product.is_active ? 'success' : 'danger'} px-3 py-1 rounded-pill small fw-semibold`;
-
-      // Store product data on Add to Cart button for cart logic
-      const addBtn = document.getElementById('add-to-cart-btn');
-      addBtn.dataset.slug = product.slug;
-      addBtn.dataset.name = product.name;
-      addBtn.dataset.price = product.price;
-      addBtn.dataset.image = product.image;
-
-      // Show content, hide loading
-      loading.classList.add('d-none');
-      content.classList.remove('d-none');
-
-    } catch (err) {
-      console.error('Product fetch error:', err);
-      loading.classList.add('d-none');
-      errorMsg.textContent = err.message;
-      errorDiv.classList.remove('d-none');
+      saveCart(cart);
     }
-  });
 
-  // Optional: Quantity buttons logic
-  document.addEventListener('click', (e) => {
-    const qtyInput = document.getElementById('quantity');
-    if (!qtyInput) return;
+    // Load product
+    document.addEventListener('DOMContentLoaded', async () => {
+      const loading = document.getElementById('loading-state');
+      const errorDiv = document.getElementById('error-state');
+      const errorMsg = document.getElementById('error-message');
+      const content = document.getElementById('product-content');
 
-    if (e.target.classList.contains('qty-increase')) {
-      qtyInput.value = Math.min(parseInt(qtyInput.value) + 1, 50);
-    } else if (e.target.classList.contains('qty-decrease')) {
-      qtyInput.value = Math.max(parseInt(qtyInput.value) - 1, 1);
-    }
-  });
+      content.classList.add('d-none');
+      errorDiv.classList.add('d-none');
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const slug = urlParams.get('slug');
+
+      if (!slug) {
+        loading.classList.add('d-none');
+        errorMsg.textContent = 'No product selected. Please choose a product from the shop.';
+        errorDiv.classList.remove('d-none');
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/api/v1/products/${slug}`, {
+          method: 'GET',
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (!response.ok) {
+          throw new Error(response.status === 404 ? 'Product not found' : `Server error (${response.status})`);
+        }
+
+        const json = await response.json();
+        const product = json.data;
+
+        if (!product || !product.is_active) {
+          throw new Error('Product not available');
+        }
+
+        document.title = `${product.name} - ProPlus`;
+
+        document.getElementById('product-name').textContent = product.name;
+        document.getElementById('product-price').textContent = product.formatted_price;
+        document.getElementById('product-image').src = getProductImageUrl(product.image || product.thumbnail);
+        document.getElementById('product-image').alt = product.name;
+        document.getElementById('product-description').textContent = product.description || 'No description available.';
+
+        const badge = document.getElementById('stock-badge');
+        badge.textContent = product.is_active ? 'In stock' : 'Out of stock';
+        badge.className = `badge bg-${product.is_active ? 'success' : 'danger'}-subtle text-${product.is_active ? 'success' : 'danger'} px-3 py-1 rounded-pill small fw-semibold`;
+
+        const addBtn = document.getElementById('add-to-cart-btn');
+        addBtn.dataset.slug = product.slug;
+        addBtn.dataset.name = product.name.replace(/"/g, '&quot;');
+        addBtn.dataset.price = product.price;
+        addBtn.dataset.image = getProductImageUrl(product.image || product.thumbnail);
+
+        loading.classList.add('d-none');
+        content.classList.remove('d-none');
+
+      } catch (err) {
+        console.error('Product fetch error:', err);
+        loading.classList.add('d-none');
+        errorMsg.textContent = err.message;
+        errorDiv.classList.remove('d-none');
+      }
+    });
+
+    // Quantity buttons – unchanged
+    document.addEventListener('click', (e) => {
+      const qtyInput = document.getElementById('quantity');
+      if (!qtyInput) return;
+
+      if (e.target.classList.contains('qty-increase')) {
+        qtyInput.value = Math.min(parseInt(qtyInput.value) + 1, 50);
+      } else if (e.target.classList.contains('qty-decrease')) {
+        qtyInput.value = Math.max(parseInt(qtyInput.value) - 1, 1);
+      }
+    });
+
+    // Add to Cart – now actually works
+    document.getElementById('add-to-cart-btn')?.addEventListener('click', function () {
+      const qty = parseInt(document.getElementById('quantity')?.value || 1);
+
+      const item = {
+        slug:   this.dataset.slug,
+        name:   this.dataset.name,
+        price:  Number(this.dataset.price),
+        image:  this.dataset.image,
+        quantity: qty
+      };
+
+      if (!item.slug || !item.name || isNaN(item.price)) {
+        alert('Cannot add – missing product info');
+        return;
+      }
+
+      addToCart(item);
+
+      // Quick visual feedback (button text change)
+      const originalText = this.innerHTML;
+      this.innerHTML = '<i class="fa fa-check me-1"></i> Added!';
+      this.disabled = true;
+
+      setTimeout(() => {
+        this.innerHTML = originalText;
+        this.disabled = false;
+      }, 1800);
+    });
+
   </script>
-  <!-- Start Footer Section -->
+
+  <!-- Footer (unchanged) -->
   <footer class="footer-section">
     <div class="container relative">
 
@@ -266,7 +326,6 @@
                 </button>
               </div>
             </form>
-
           </div>
         </div>
       </div>
@@ -317,7 +376,6 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <div class="border-top copyright">
@@ -332,13 +390,11 @@
               <li><a href="#">Privacy Policy</a></li>
             </ul>
           </div>
-
         </div>
       </div>
 
     </div>
   </footer>
-  <!-- End Footer Section -->	
 
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/tiny-slider.js"></script>

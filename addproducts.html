@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Be Cool • Product Feedr</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --bg: #0f0f17;
+      --card: #161b22;
+      --text: #e6edf3;
+      --accent: #58a6ff;
+      --accent-dark: #388bfd;
+      --danger: #f85149;
+      --success: #3fb950;
+      --border: #30363d;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(88,166,255,0.08) 0%, transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(88,166,255,0.06) 0%, transparent 35%);
+    }
+    .container { max-width: 680px; margin: 0 auto; }
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 0.6rem;
+      background: linear-gradient(90deg, #58a6ff, #a371f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { text-align: center; color: #8b949e; margin-bottom: 2.5rem; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .form-group { margin-bottom: 1.5rem; }
+    label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: #c9d1d9; }
+    input[type="text"], input[type="number"], input[type="url"], textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 1rem;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(88,166,255,0.15);
+    }
+    textarea { min-height: 100px; resize: vertical; }
+    .file-input-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      width: 100%;
+    }
+    .file-input-wrapper input[type="file"] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .custom-file-btn {
+      background: #21262d;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.9rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .custom-file-btn:hover { background: #30363d; }
+    .preview-container {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .preview-img {
+      max-width: 100%;
+      max-height: 220px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #000;
+      object-fit: contain;
+    }
+    .slug-preview { margin: 0.5rem 0; font-size: 0.9rem; color: #8b949e; word-break: break-all; }
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+      margin-top: 1.2rem;
+    }
+    button:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    button:disabled { opacity: 0.55; cursor: not-allowed; }
+    .message {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+    .success { background: rgba(63,185,80,0.18); border: 1px solid rgba(63,185,80,0.45); color: #aff5b4; }
+    .error   { background: rgba(248,81,73,0.18); border: 1px solid rgba(248,81,73,0.45); color: #ffcccc; }
+    .field-error { color: var(--danger); font-size: 0.85rem; margin-top: 0.3rem; }
+    .size-warning { color: #ffa657; font-size: 0.9rem; margin-top: 0.4rem; }
+    footer { text-align: center; margin-top: 3.5rem; color: #444d56; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Be Cool</h1>
+  <p class="subtitle">Upload local images • Feed products to your API</p>
+
+  <div class="card">
+    <form id="productForm">
+      <div class="form-group">
+        <label for="name">Product Name *</label>
+        <input type="text" id="name" required placeholder="e.g. Retro Wave Jacket"/>
+        <div class="field-error" id="nameError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price (USD) *</label>
+        <input type="number" id="price" step="0.01" min="0" required placeholder="49.99"/>
+        <div class="field-error" id="priceError"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Main Image * (upload from device)</label>
+        <div class="file-input-wrapper">
+          <div class="custom-file-btn"><i class="fas fa-cloud-upload-alt"></i> Choose Image</div>
+          <input type="file" id="imageFile" accept="image/*" required/>
+        </div>
+        <div class="preview-container" id="imagePreviewContainer" style="display:none;">
+          <img id="imagePreview" class="preview-img" alt="Preview"/>
+        </div>
+        <div class="size-warning" id="imageSizeWarn"></div>
+        <div class="field-error" id="imageError"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Thumbnail (optional - smaller version)</label>
+        <div class="file-input-wrapper">
+          <div class="custom-file-btn"><i class="fas fa-cloud-upload-alt"></i> Choose Thumbnail</div>
+          <input type="file" id="thumbnailFile" accept="image/*"/>
+        </div>
+        <div class="preview-container" id="thumbPreviewContainer" style="display:none;">
+          <img id="thumbPreview" class="preview-img" alt="Thumbnail Preview" style="max-height:120px;"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description (optional)</label>
+        <textarea id="description" placeholder="Limited edition synthwave apparel..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="is_active" checked/> Active (shown in shop)
+        </label>
+      </div>
+
+      <div class="slug-preview" id="slugPreview">Slug will be auto-generated...</div>
+
+      <button type="submit" id="submitBtn">
+        <i class="fas fa-rocket"></i> Launch Product
+      </button>
+    </form>
+
+    <div id="messageArea" class="message" style="display:none;"></div>
+  </div>
+
+  <footer>Local upload vibes • 2026</footer>
+</div>
+
+<script>
+  const form = document.getElementById('productForm');
+  const nameInput = document.getElementById('name');
+  const slugPreview = document.getElementById('slugPreview');
+  const submitBtn = document.getElementById('submitBtn');
+  const messageArea = document.getElementById('messageArea');
+
+  let imagePreviewUrl = null;
+  let thumbPreviewUrl  = null;
+
+  // Live slug preview
+  nameInput.addEventListener('input', () => {
+    const name = nameInput.value.trim();
+    if (!name) {
+      slugPreview.textContent = 'Slug will be auto-generated...';
+      return;
+    }
+    const slugBase = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    slugPreview.textContent = `Preview: ${slugBase}-${Date.now()}`;
+  });
+
+  // Image preview (local base64 for display only)
+  document.getElementById('imageFile').addEventListener('change', e => handlePreview(e, 'image'));
+  document.getElementById('thumbnailFile').addEventListener('change', e => handlePreview(e, 'thumb'));
+
+  function handlePreview(event, type) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      alert('Please select an image file');
+      event.target.value = '';
+      return;
+    }
+
+    if (file.size > 4 * 1024 * 1024) {
+      const warnEl = type === 'image' ? 'imageSizeWarn' : 'thumbSizeWarn' || 'imageSizeWarn';
+      document.getElementById(warnEl).textContent = 'File is quite large (>4MB) — upload might be slow';
+    }
+
+    const url = URL.createObjectURL(file);
+    if (type === 'image') {
+      imagePreviewUrl = url;
+      document.getElementById('imagePreview').src = url;
+      document.getElementById('imagePreviewContainer').style.display = 'block';
+    } else {
+      thumbPreviewUrl = url;
+      document.getElementById('thumbPreview').src = url;
+      document.getElementById('thumbPreviewContainer').style.display = 'block';
+    }
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    clearErrors();
+
+    const name        = document.getElementById('name').value.trim();
+    const price       = parseFloat(document.getElementById('price').value);
+    const description = document.getElementById('description').value.trim();
+    const is_active   = document.getElementById('is_active').checked;
+
+    if (!name)        return showFieldError('nameError', 'Name is required');
+    if (isNaN(price) || price < 0) return showFieldError('priceError', 'Valid price ≥ 0 required');
+    if (!document.getElementById('imageFile').files.length) {
+      return showFieldError('imageError', 'Main image is required');
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+
+    // ────────────────────────────────────────────────
+    //              REAL FILE UPLOAD with FormData
+    // ────────────────────────────────────────────────
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('price', price);
+    formData.append('description', description || '');
+    formData.append('is_active', is_active ? '1' : '0');
+    formData.append('image', document.getElementById('imageFile').files[0]);
+
+    const thumbFile = document.getElementById('thumbnailFile').files[0];
+    if (thumbFile) {
+      formData.append('thumbnail', thumbFile);
+    }
+
+    try {
+      const res = await fetch('http://127.0.0.1:8000/api/v1/products', {
+        method: 'POST',
+        body: formData
+        // ──── DO NOT set 'Content-Type' header here ────
+        // Browser automatically sets multipart/form-data + boundary
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        if (res.status === 422 && result.errors) {
+          // Show Laravel validation errors
+          Object.entries(result.errors).forEach(([key, msgs]) => {
+            const el = document.getElementById(key + 'Error');
+            if (el) el.textContent = msgs[0];
+          });
+        }
+        throw new Error(result.message || result.error || 'Failed to create product');
+      }
+
+      showMessage(`"${name}" added successfully! 🚀`, 'success');
+
+      // Reset form
+      form.reset();
+      if (imagePreviewUrl) URL.revokeObjectURL(imagePreviewUrl);
+      if (thumbPreviewUrl) URL.revokeObjectURL(thumbPreviewUrl);
+      imagePreviewUrl = thumbPreviewUrl = null;
+      document.getElementById('imagePreviewContainer').style.display = 'none';
+      document.getElementById('thumbPreviewContainer').style.display  = 'none';
+      slugPreview.textContent = 'Slug will be auto-generated...';
+
+    } catch (err) {
+      showMessage(err.message || 'Upload failed. Check console.', 'error');
+      console.error('Upload error:', err);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-rocket"></i> Launch Product';
+    }
+  });
+
+  function showMessage(text, type) {
+    messageArea.textContent = text;
+    messageArea.className = `message ${type}`;
+    messageArea.style.display = 'block';
+    setTimeout(() => { messageArea.style.display = 'none'; }, 9000);
+  }
+
+  function showFieldError(id, text) {
+    document.getElementById(id).textContent = text;
+  }
+
+  function clearErrors() {
+    document.querySelectorAll('.field-error').forEach(el => el.textContent = '');
+    document.getElementById('imageSizeWarn').textContent = '';
+  }
+
+  // Clean up object URLs when page unloads
+  window.addEventListener('unload', () => {
+    if (imagePreviewUrl) URL.revokeObjectURL(imagePreviewUrl);
+    if (thumbPreviewUrl) URL.revokeObjectURL(thumbPreviewUrl);
+  });
+</script>
+</body>
+</html>
